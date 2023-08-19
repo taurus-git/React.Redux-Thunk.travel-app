@@ -5,12 +5,16 @@ const cssnano = require('gulp-cssnano');
 const sourcemaps = require('gulp-sourcemaps');
 const concat = require('gulp-concat');
 
-const outputPath = 'src/assets/css/'; // новый путь вывода
+const outputPath = 'src/assets/css/';
 
 gulp.task('styles', function() {
-    return gulp.src('src/**/**/*.scss')
+    return gulp.src([
+        'src/assets/scss/**/*.scss',
+        'src/components/**/*.scss',
+        'src/containers/**/*.scss'
+    ])
         .pipe(sourcemaps.init())
-        .pipe(concat('style.css')) // Изменено имя файла на style.css
+        .pipe(concat('style.css'))
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(cssnano())
