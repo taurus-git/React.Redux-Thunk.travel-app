@@ -4,6 +4,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
 const sourcemaps = require('gulp-sourcemaps');
 const concat = require('gulp-concat');
+const plumber = require('gulp-plumber');
 
 const outputPath = 'src/assets/css/';
 
@@ -14,6 +15,7 @@ gulp.task('styles', function() {
         'src/components/**/*.scss',
         'src/containers/**/*.scss'
     ])
+        .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(concat('style.css'))
         .pipe(sass().on('error', sass.logError))
