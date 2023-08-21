@@ -1,0 +1,15 @@
+.header-nav {
+  display: none;
+
+  &.open {
+    display: block;
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    .header-nav {
+      display: block;
+    }
+  }
+}
+
+

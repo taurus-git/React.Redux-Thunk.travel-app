@@ -1,8 +1,14 @@
 import React from 'react';
+import classNames from "classnames";
 
-const HeaderMenu = () => {
+const HeaderMenu = ( { isMenuOpen } ) => {
+    const navClasses = classNames( {
+        'header-nav': true,
+        'open': isMenuOpen
+    } );
+
     return (
-        <nav>
+        <nav className={ navClasses }>
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="#">Status</a></li>
