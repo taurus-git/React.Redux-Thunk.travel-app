@@ -1,0 +1,68 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+
+  /*@media only screen and (max-width: $bp-large) {
+    font-size: 50%;
+  }*/
+}
+
+body {
+  font-family: var(--font-helvetica-regular);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--white);
+  min-height: 100vh;
+}
+
+/*
+FS:16px
+LH: 18.4px
+W: 400
+
+FS:72px
+LH: 82.79px
+W: 700
+
+---
+Netflix Sans
+FS: 13px
+LH: 16.6px
+W: 400
+C: #808080*/
+
+.container {
+  width: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &.full {
+
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 944px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1152px;
+  }
+}

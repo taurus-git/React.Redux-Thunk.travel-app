@@ -5,8 +5,12 @@ import HeaderMenu from "../../components/HeaderMenu/HeaderMenu";
 const Header = () => {
     return (
         <header>
-            <Logo/>
-            <HeaderMenu/>
+            <div className="container">
+                <div className="header">
+                    <Logo/>
+                    <HeaderMenu/>
+                </div>
+            </div>
         </header>
     );
 };
