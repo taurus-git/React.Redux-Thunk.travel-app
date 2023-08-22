@@ -2,7 +2,7 @@
   display: block;
 
   @media screen and (min-width: $screen-sm) {
-    .menu-toggle {
+    & {
       display: none;
     }
   }
