@@ -39,6 +39,15 @@ LH: 16.6px
 W: 400
 C: #808080*/
 
+a {
+  color: $black;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: lighten($black, 20%);
+}
+
 .container {
   width: 100%;
   padding-left: 24px;

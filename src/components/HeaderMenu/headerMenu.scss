@@ -13,10 +13,18 @@
     left: 0;
   }
 
-
   @media screen and (min-width: $screen-sm) {
     & {
       display: block;
+
+      & {
+        a {
+          color: $white;
+          &:active {
+
+          }
+        }
+      }
     }
   }
 }
