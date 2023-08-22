@@ -1,0 +1,10 @@
+.header__logo {
+  svg {
+    width: 5.8rem;
+    height: auto;
+
+    @media screen and (min-width: $screen-sm) {
+      width: 7.7rem;
+    }
+  }
+}

@@ -1,9 +1,18 @@
-.header-nav {
+.header__nav {
   display: none;
+
+  & ul {
+    padding-left: 0;
+    list-style: none;
+  }
 
   &.open {
     display: block;
+    position: absolute;
+    margin-top: 20rem;
+    left: 0;
   }
+
 
   @media screen and (min-width: $screen-sm) {
     & {

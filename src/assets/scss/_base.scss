@@ -1,3 +1,4 @@
+@import '_variables.scss';
 *,
 *::before,
 *::after {
@@ -14,10 +15,11 @@ html {
 }
 
 body {
-  font-family: var(--font-helvetica-regular);
+  font-family: $font-helvetica-regular;
   font-weight: 400;
+  font-size: 1.6rem;
   line-height: 1.15;
-  color: var(--white);
+  color: $white;
   min-height: 100vh;
 }
 
@@ -65,4 +67,28 @@ C: #808080*/
   .container {
     max-width: 1152px;
   }
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+h4 {
+
+}
+
+h5 {
+
+}
+
+h6 {
+
 }

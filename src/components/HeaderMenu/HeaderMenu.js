@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 const HeaderMenu = ( { isMenuOpen } ) => {
     const navClasses = classNames( {
-        'header-nav': true,
+        'header__nav': true,
         'open': isMenuOpen
     } );
 
