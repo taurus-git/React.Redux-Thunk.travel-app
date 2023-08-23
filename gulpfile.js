@@ -11,7 +11,9 @@ const outputPath = 'src/assets/css/';
 gulp.task('styles', function() {
     return gulp.src([
         'node_modules/normalize.css/normalize.css',
-        'src/assets/scss/**/*.scss',
+        'src/assets/scss/_fonts.scss',
+        'src/assets/scss/_variables.scss',
+        'src/assets/scss/_base.scss',
         'src/components/**/*.scss',
         'src/containers/**/*.scss'
     ])
