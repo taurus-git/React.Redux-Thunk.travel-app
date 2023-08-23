@@ -11,9 +11,9 @@ const HeaderMenu = ( { isMenuOpen, closeMenu } ) => {
 
     return (
         <div className={ wrapClasses }>
-            <div className="header__menu-icon" onClick={ closeMenu }>
+            <button className="header__menu-icon button" onClick={ closeMenu }>
                 <img src={ closeIcon } alt=""/>
-            </div>
+            </button>
             <nav className="header__menu-nav">
                 <ul>
                     <li>

@@ -19,7 +19,7 @@ const Header = () => {
             <div className="container">
                 <div className="header">
                     <Logo/>
-                    <button onClick={ toggleMenu } className="header__menu-toggle">
+                    <button onClick={ toggleMenu } className="header__menu-toggle button">
                         <img src={ menuIcon } alt="Open Menu"/>
                     </button>
                     <HeaderMenu isMenuOpen={ isMenuOpen } closeMenu={ closeMenu }/>
