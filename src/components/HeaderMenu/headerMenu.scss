@@ -1,22 +1,19 @@
 .header__menu {
   &-wrapper {
     display: none;
-    background-color: green;
-    width: 100%;
-    height: 70vh;
     position: fixed;
     bottom: 0;
-    z-index: 1;
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
+    transform: translateY(100%);
+    z-index: 5;
 
     &.open {
+      background-color: green;
       display: block;
-      position: absolute;
-      left: -2.4rem;
-      bottom: -50rem;
-      width: calc(100% + 4.8rem);
+      width: 100%;
       height: 80vh;
+      transform: translateY(0);
     }
   }
 
