@@ -1,5 +1,6 @@
-.header {
-  &__menu-wrapper {
+.header__menu {
+  &-wrapper {
+    display: none;
     background-color: green;
     width: 100%;
     height: 70vh;
@@ -8,19 +9,25 @@
     z-index: 1;
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
+
+    &.open {
+      display: block;
+      position: absolute;
+      left: -2.4rem;
+      bottom: -50rem;
+      width: calc(100% + 4.8rem);
+      height: 80vh;
+    }
   }
 
-  &__icon {
-
+  &-icon {
     img {
       width: 2.4rem;
       height: auto;
     }
   }
 
-  &__nav {
-    display: none;
-
+  &-nav {
     ul {
       padding-left: 0;
       list-style: none;
@@ -30,37 +37,26 @@
       margin-bottom: .5rem;
     }
 
-    &.open {
-      display: block;
-      position: absolute;
-      left: 0;
-      background-color: green;
-      width: 100%;
-      height: 90vh;
-    }
-
     @media screen and (min-width: $screen-sm) {
-      & {
-        display: block;
+      display: block;
 
-        li {
-          display: inline-block;
-          position: relative;
-        }
+      li {
+        display: inline-block;
+        position: relative;
+      }
 
-        a {
-          padding: 0 .5rem;
+      a {
+        padding: 0 .5rem;
 
-          &.active::after {
-            content: "";
-            position: absolute;
-            bottom: -.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% + 1rem);
-            height: .2rem;
-            background-color: $black;
-          }
+        &.active::after {
+          content: "";
+          position: absolute;
+          bottom: -.5rem;
+          left: 50%;
+          transform: translateX(-50%);
+          width: calc(100% + 1rem);
+          height: .2rem;
+          background-color: $black;
         }
       }
     }

@@ -10,15 +10,19 @@ const Header = () => {
         setIsMenuOpen( !isMenuOpen );
     }
 
+    const closeMenu = () => {
+        setIsMenuOpen( false );
+    }
+
     return (
         <header>
             <div className="container">
                 <div className="header">
                     <Logo/>
-                    <button onClick={ toggleMenu } className="menu-toggle">
+                    <button onClick={ toggleMenu } className="header__menu-toggle">
                         <img src={ menuIcon } alt="Open Menu"/>
                     </button>
-                    <HeaderMenu isMenuOpen={ isMenuOpen }/>
+                    <HeaderMenu isMenuOpen={ isMenuOpen } closeMenu={ closeMenu }/>
                 </div>
             </div>
         </header>

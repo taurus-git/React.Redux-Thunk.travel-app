@@ -3,18 +3,18 @@ import { NavLink } from 'react-router-dom';
 import classNames from "classnames";
 import closeIcon from "../../assets/img/close.svg";
 
-const HeaderMenu = ( { isMenuOpen } ) => {
-    const navClasses = classNames( {
-        'header__nav': true,
+const HeaderMenu = ( { isMenuOpen, closeMenu } ) => {
+    const wrapClasses = classNames( {
+        'header__menu-wrapper': true,
         'open': isMenuOpen
     } );
 
     return (
-        <div className="header__menu-wrapper">
-            <div className="header__icon">
+        <div className={ wrapClasses }>
+            <div className="header__menu-icon" onClick={ closeMenu }>
                 <img src={ closeIcon } alt=""/>
             </div>
-            <nav className={ navClasses }>
+            <nav className="header__menu-nav">
                 <ul>
                     <li>
                         <NavLink to="/">Home</NavLink>
