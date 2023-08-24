@@ -9,7 +9,7 @@
     z-index: 5;
 
     &.open {
-      background-color: green;
+      background-color: $white;
       display: block;
       width: 100%;
       height: 80vh;
@@ -17,10 +17,25 @@
     }
   }
 
+  &-container {
+    padding-right: 2.4rem;
+    padding-left: 2.4rem;
+  }
+
   &-icon {
-    img {
+    svg {
       width: 2.4rem;
       height: auto;
+      margin-top: 2.2rem;
+      fill: $black;
+
+      & path {
+        stroke: $black;
+      }
+
+      &:hover path {
+        stroke: lighten($black, 50%);
+      }
     }
   }
 
