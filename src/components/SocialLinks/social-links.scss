@@ -1,3 +1,16 @@
 .social__links-list {
   list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social__links-item:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.social__links-icon {
+  &:hover path{
+    fill: lighten($grey, 30%);
+  }
 }

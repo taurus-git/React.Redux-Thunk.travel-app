@@ -2,6 +2,7 @@
   background-color: $black;
   padding-top: 2.4rem;
   padding-bottom: 2.4rem;
+  color: $grey;
 
   &__wrap {
     display: flex;
@@ -12,7 +13,29 @@
     }
   }
 
+  &__logo {
+    margin-bottom: 2.4rem;
+  }
 
+  &__promo_cta {
+    text-align: center;
+    margin-bottom: 2.4rem;
+
+    button {
+      padding: 2.4rem;
+      border: 2px solid $grey;
+
+      &:hover,
+      &:focus {
+        color: lighten($grey, 30%);
+        border: 2px solid lighten($grey, 30%);
+      }
+    }
+  }
+
+  .footer__copyright {
+    text-align: center;
+  }
 
   ul {
     padding-left: 0;
@@ -23,11 +46,8 @@
   a {
     color: $grey;
 
-    &:hover,
-    &:focus {
-      color: lighten($grey, 50%);
+    &:hover {
+      color: lighten($grey, 30%);
     }
   }
-
-
 }

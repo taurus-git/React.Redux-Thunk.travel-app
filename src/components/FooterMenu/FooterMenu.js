@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const FooterMenu = ( { links } ) => {
     return (
@@ -7,7 +7,7 @@ const FooterMenu = ( { links } ) => {
             { links.map( ( column, index ) => (
                 <li key={ index } className="footer__menu-column">
                     { column.map( ( link, idx ) => (
-                        <NavLink key={ idx } to={ link.path }>{ link.label }</NavLink>
+                        <Link key={ idx } to={ link.path }>{ link.label }</Link>
                     ) ) }
                 </li>
             ) ) }

@@ -1,17 +1,21 @@
-&__wrap_menu {
-  display: flex;
-  align-items: center;
-  flex-direction: inherit;
-}
-
-&__menu {
-  li:not(:last-child) {
-    margin-bottom: 1rem;
+.footer {
+  &__wrap_menu {
+    display: flex;
+    align-items: center;
+    flex-direction: inherit;
   }
-}
 
-&__menu-column {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  &__menu {
+    width: 100%;
+
+    li:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__menu-column {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 }
