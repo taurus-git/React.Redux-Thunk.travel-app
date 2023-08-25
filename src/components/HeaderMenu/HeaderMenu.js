@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import classNames from "classnames";
 
 const HeaderMenu = ( props ) => {
-    const { isMenuOpen, closeMenu } = props;
+    const { isMenuOpen, closeMenu, links } = props;
 
     const wrapClasses = classNames( {
         'header__menu-wrapper': true,
@@ -27,21 +27,11 @@ const HeaderMenu = ( props ) => {
                 </button>
                 <nav className="header__menu-nav">
                     <ul>
-                        <li>
-                            <NavLink to="/" onClick={ closeMenu }>Home</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/status" onClick={ closeMenu }>Status</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/flights" onClick={ closeMenu }>Flights</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/packages" onClick={ closeMenu }>Packages</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/signup" onClick={ closeMenu }>Sign Up</NavLink>
-                        </li>
+                        { links.map( ( link ) => (
+                            <li>
+                                <NavLink to={ link.path } onClick={ closeMenu }>{ link.label }</NavLink>
+                            </li>
+                        ) ) }
                     </ul>
                 </nav>
             </div>

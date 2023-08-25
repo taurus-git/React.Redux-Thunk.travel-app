@@ -3,6 +3,7 @@ import classNames from "classnames";
 import Logo from '../../components/Logo/Logo'
 import HeaderMenu from "../../components/HeaderMenu/HeaderMenu";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import headerLinks from "../../data/headerLinks";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState( false );
@@ -29,9 +30,23 @@ const Header = () => {
                 <div className="header" ref={ menuRef }>
                     <Logo/>
                     <button onClick={ toggleMenu } className="header__menu-toggle button">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M1 12C1 11.4477 1.44772 11 2 11H22C22.5523 11 23 11.4477 23 12C23 12.5523 22.5523 13 22 13H2C1.44772 13 1 12.5523 1 12Z" fill="#ffffff"></path> <path d="M1 4C1 3.44772 1.44772 3 2 3H22C22.5523 3 23 3.44772 23 4C23 4.55228 22.5523 5 22 5H2C1.44772 5 1 4.55228 1 4Z" fill="#ffffff"></path> <path d="M1 20C1 19.4477 1.44772 19 2 19H22C22.5523 19 23 19.4477 23 20C23 20.5523 22.5523 21 22 21H2C1.44772 21 1 20.5523 1 20Z" fill="#ffffff"></path> </g></svg>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M1 12C1 11.4477 1.44772 11 2 11H22C22.5523 11 23 11.4477 23 12C23 12.5523 22.5523 13 22 13H2C1.44772 13 1 12.5523 1 12Z"
+                                    fill="#ffffff"></path>
+                                <path
+                                    d="M1 4C1 3.44772 1.44772 3 2 3H22C22.5523 3 23 3.44772 23 4C23 4.55228 22.5523 5 22 5H2C1.44772 5 1 4.55228 1 4Z"
+                                    fill="#ffffff"></path>
+                                <path
+                                    d="M1 20C1 19.4477 1.44772 19 2 19H22C22.5523 19 23 19.4477 23 20C23 20.5523 22.5523 21 22 21H2C1.44772 21 1 20.5523 1 20Z"
+                                    fill="#ffffff"></path>
+                            </g>
+                        </svg>
                     </button>
-                    <HeaderMenu isMenuOpen={ isMenuOpen } closeMenu={ closeMenu }/>
+                    <HeaderMenu isMenuOpen={ isMenuOpen } closeMenu={ closeMenu } links={ headerLinks }/>
                 </div>
             </div>
         </header>
