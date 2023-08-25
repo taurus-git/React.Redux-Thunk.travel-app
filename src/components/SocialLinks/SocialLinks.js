@@ -7,7 +7,7 @@ const SocialLinks = () => {
                 <a href="https://facebook.com" target="_blank" rel="noopenner noreferrer" aria-label="Facebook.com">
                     <svg className="social__links-icon" xmlns="http://www.w3.org/2000/svg" width="25" height="24"
                          viewBox="0 0 25 24" fill="none">
-                        <g clip-path="url(#clip0_1_3960)">
+                        <g clipPath="url(#clip0_1_3960)">
                             <path
                                 d="M22.273 0H1.7348C0.778809 0 0.00390625 0.774902 0.00390625 1.7309V22.2691C0.00390625 23.2251 0.778809 24 1.7348 24H12.8242V14.7188H9.70703V11.0859H12.8242V8.41241C12.8242 5.31207 14.717 3.62457 17.4826 3.62457C18.8072 3.62457 19.9456 3.72327 20.2773 3.7674V7.00781H18.3703C16.8655 7.00781 16.5742 7.72284 16.5742 8.77222V11.0859H20.1719L19.7031 14.7188H16.5742V24H22.273C23.229 24 24.0039 23.2251 24.0039 22.2691V1.7309C24.0039 0.774902 23.229 0 22.273 0V0Z"
                                 fill="#808080"/>

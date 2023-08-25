@@ -1,0 +1,17 @@
+&__wrap_menu {
+  display: flex;
+  align-items: center;
+  flex-direction: inherit;
+}
+
+&__menu {
+  li:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+
+&__menu-column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

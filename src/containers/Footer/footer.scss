@@ -1,3 +1,33 @@
 .footer {
   background-color: $black;
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+
+    .footer__wrap-item:not(:last-child) {
+      margin-bottom: 2.4rem;
+    }
+  }
+
+
+
+  ul {
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  a {
+    color: $grey;
+
+    &:hover,
+    &:focus {
+      color: lighten($grey, 50%);
+    }
+  }
+
+
 }
