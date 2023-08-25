@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from "classnames";
-import closeIcon from "../../assets/img/close.svg";
 
 const HeaderMenu = ( props ) => {
     const { isMenuOpen, closeMenu } = props;
