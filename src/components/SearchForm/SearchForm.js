@@ -1,8 +1,26 @@
 import React from 'react';
+import { useSearchTicketsMutation } from "../../store";
 
 const SearchForm = () => {
+    const [searchTickets, results] = useSearchTicketsMutation();
+
     const handleSubmit = ( e ) => {
         e.preventDefault();
+
+        const formData = new FormData( e.target );
+
+        const params = {
+            form: formData.get( 'from' ),
+            to: formData.get( 'to' ),
+            departureDate: formData.get( 'departureDate' ),
+            returnDate: formData.get( 'returnDate' ),
+            adults: Number( formData.get( 'adults' ) ),
+            children: Number( formData.get( 'children' ) ),
+        };
+
+        console.log(params);
+
+        searchTickets( params );
     }
 
     return (
@@ -39,7 +57,7 @@ const SearchForm = () => {
 
                         <label htmlFor="returnTicketDate">
                             Return ticket date:
-                            <input type="date" name="returnTicketDate"/>
+                            <input type="date" name="returnDate"/>
                         </label>
 
                         <label htmlFor="adults">
