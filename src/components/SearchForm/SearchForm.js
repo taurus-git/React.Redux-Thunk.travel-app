@@ -1,16 +1,17 @@
-import React from 'react';
-import { useSearchTicketsMutation } from "../../store";
+import React, { useState } from 'react';
+import { useSearchTicketsQuery } from "../../store";
 
 const SearchForm = () => {
-    const [searchTickets, results] = useSearchTicketsMutation();
+    const [params, setParams] = useState( null );
+    const { data, error, isLoading } = useSearchTicketsQuery();
 
     const handleSubmit = ( e ) => {
         e.preventDefault();
 
         const formData = new FormData( e.target );
 
-        const params = {
-            form: formData.get( 'from' ),
+        const newParams = {
+            from: formData.get( 'from' ),
             to: formData.get( 'to' ),
             departureDate: formData.get( 'departureDate' ),
             returnDate: formData.get( 'returnDate' ),
@@ -18,9 +19,8 @@ const SearchForm = () => {
             children: Number( formData.get( 'children' ) ),
         };
 
-        console.log(params);
-
-        searchTickets( params );
+        console.log( newParams );
+        setParams( newParams );
     }
 
     return (

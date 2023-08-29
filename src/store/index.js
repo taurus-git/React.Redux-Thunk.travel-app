@@ -9,5 +9,5 @@ export const store = configureStore( {
 } );
 
 export {
-    useSearchTicketsMutation
+    useSearchTicketsQuery
 } from './apis/ticketsApi';
