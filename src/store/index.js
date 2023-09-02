@@ -9,5 +9,6 @@ export const store = configureStore( {
 } );
 
 export {
-    useSearchTicketsQuery
+    useSearchTicketsQuery,
+    useGetCitiesQuery
 } from './apis/ticketsApi';

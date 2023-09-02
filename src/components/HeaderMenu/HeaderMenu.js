@@ -28,8 +28,9 @@ const HeaderMenu = ( props ) => {
                 <nav className="header__menu-nav">
                     <ul>
                         { links.map( ( link ) => (
-                            <li>
-                                <NavLink to={ link.path } onClick={ closeMenu }>{ link.label }</NavLink>
+                            <li key={ link.path }>
+                                <NavLink to={ link.path }
+                                         onClick={ closeMenu }>{ link.label }</NavLink>
                             </li>
                         ) ) }
                     </ul>
