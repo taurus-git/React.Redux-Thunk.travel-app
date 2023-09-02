@@ -7,7 +7,7 @@ const FooterMenu = ( { links } ) => {
             { links.map( ( column, index ) => (
                 <li key={ index } className="footer__menu-column">
                     { column.map( ( link, idx ) => (
-                        <Link key={ idx } to={ link.path }>{ link.label }</Link>
+                        <Link key={ link.label + idx } to={ link.path }>{ link.label }</Link>
                     ) ) }
                 </li>
             ) ) }

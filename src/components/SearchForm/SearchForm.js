@@ -10,7 +10,6 @@ const SearchForm = () => {
         setInputValue( e.target.value );
     };
 
-    console.log( citiesData );
 
     const handleSubmit = ( e ) => {
         e.preventDefault();
