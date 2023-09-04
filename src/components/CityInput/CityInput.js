@@ -4,11 +4,9 @@ import { useGetCitiesQuery, changeCityName } from "../../store";
 
 const CityInput = ( { name, htmlFor, required } ) => {
     const dispatch = useDispatch();
-    const { inputValue } = useSelector( ( state ) => {
-        return {
-            inputValue: state.cityNameInput[htmlFor]
-        }
-    } );
+    const inputValue = useSelector( ( state ) =>
+        state.cityNameInput[htmlFor]
+     );
 
     const shouldSkip = !inputValue;
     const { data: citiesData } = useGetCitiesQuery( inputValue, { skip: shouldSkip } );

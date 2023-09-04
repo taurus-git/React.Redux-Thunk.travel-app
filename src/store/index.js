@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { ticketsApi } from './apis/ticketsApi';
 import { citiesApi } from './apis/citiesApi';
-import { cityNameReducer } from "./slices/citiesSlice";
+import { cityNameReducer } from "./slices/cityNameSlice";
 
 export const store = configureStore( {
     reducer: {
@@ -22,5 +22,5 @@ export {
 } from './apis/citiesApi';
 export {
     changeCityName,
-} from './slices/citiesSlice';
+} from './slices/cityNameSlice';
 
