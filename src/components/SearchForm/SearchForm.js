@@ -1,31 +1,24 @@
 import React, { useState } from 'react';
 import { useSearchTicketsQuery, useGetCitiesQuery } from "../../store";
+import CityInput from "../CityInput/CityInput";
 
 const SearchForm = () => {
-    const [inputValue, setInputValue] = useState( "" );
-    const shouldSkip = !inputValue;
-    const { data: citiesData } = useGetCitiesQuery( inputValue, { skip: shouldSkip } );
-
-    const handleChange = ( e ) => {
-        setInputValue( e.target.value );
-    };
-
 
     const handleSubmit = ( e ) => {
         e.preventDefault();
 
         const formData = new FormData( e.target );
 
-        const newParams = {
+        /*const newParams = {
             from: citiesData?.find( city => city.name === formData.get( 'from' ) )?.code,
             to: citiesData?.find( city => city.name === formData.get( 'to' ) )?.code,
-            /*departureDate: formData.get( 'departureDate' ),
+            /!*departureDate: formData.get( 'departureDate' ),
             returnDate: formData.get( 'returnDate' ),
             adults: Number( formData.get( 'adults' ) ),
-            children: Number( formData.get( 'children' ) ),*/
+            children: Number( formData.get( 'children' ) ),*!/
         };
 
-        console.log( newParams );
+        console.log( newParams );*/
     };
 
     return (
@@ -37,22 +30,19 @@ const SearchForm = () => {
                 <div className="search-form__form">
 
                     <form onSubmit={ handleSubmit }>
-
-                        <label htmlFor="from">
+                        <CityInput name="From:" htmlFor="from" required />
+                        <CityInput name="To:" htmlFor="to" />
+                        {/*<label htmlFor="from">
                             From:
                             <input type="text" name="from" list="cities" placeholder="Enter city name"
                                    value={ inputValue } onChange={ handleChange } required/>
-                        </label>
-                        <label htmlFor="to">
+                        </label>*/}
+                        {/*<label htmlFor="to">
                             To:
                             <input type="text" name="to" list="cities" placeholder="Enter city name"/>
-                        </label>
+                        </label>*/}
 
-                        <datalist id="cities">
-                            { citiesData?.map( city => (
-                                <option key={ city.code + city.name } value={ city.name }/>
-                            ) ) }
-                        </datalist>
+
 
                         <label htmlFor="departureDate">
                             Departure date:
