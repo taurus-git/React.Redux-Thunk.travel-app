@@ -6,18 +6,16 @@ const CityInput = ( { name, htmlFor, required } ) => {
     const dispatch = useDispatch();
     const { inputValue } = useSelector( ( state ) => {
         return {
-            inputValue: state.cityNameInput.name
+            inputValue: state.cityNameInput[htmlFor]
         }
-
     } );
-
-    console.log(inputValue);
 
     const shouldSkip = !inputValue;
     const { data: citiesData } = useGetCitiesQuery( inputValue, { skip: shouldSkip } );
 
     const handleChange = ( e ) => {
-        dispatch( changeCityName( e.target.value ) )
+        const value = e.target.value;
+        dispatch( changeCityName( { field: htmlFor, value } ) )
     };
 
     return (

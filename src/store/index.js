@@ -13,6 +13,7 @@ export const store = configureStore( {
         getDefaultMiddleware().concat( ticketsApi.middleware, citiesApi.middleware ),
 } );
 
+
 export {
     useSearchTicketsQuery,
 } from './apis/ticketsApi';
@@ -20,6 +21,6 @@ export {
     useGetCitiesQuery,
 } from './apis/citiesApi';
 export {
-    changeCityName
+    changeCityName,
 } from './slices/citiesSlice';
 
