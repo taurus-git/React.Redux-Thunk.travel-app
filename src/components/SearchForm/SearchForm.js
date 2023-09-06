@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { useSearchTicketsQuery, useGetCitiesQuery } from "../../store";
 import CityInput from "../CityInput/CityInput";
 
 const SearchForm = () => {
+    const { from, to } = useSelector( ( state ) =>
+        state.cityNameInput
+    );
 
     const handleSubmit = ( e ) => {
         e.preventDefault();
 
         const formData = new FormData( e.target );
 
+
         /*const newParams = {
-            from: citiesData?.find( city => city.name === formData.get( 'from' ) )?.code,
-            to: citiesData?.find( city => city.name === formData.get( 'to' ) )?.code,
+            from: citiesData?.find( city => city.name === from)?.code,
+            to: citiesData?.find( city => city.name === to )?.code,
             /!*departureDate: formData.get( 'departureDate' ),
             returnDate: formData.get( 'returnDate' ),
             adults: Number( formData.get( 'adults' ) ),
@@ -30,19 +35,8 @@ const SearchForm = () => {
                 <div className="search-form__form">
 
                     <form onSubmit={ handleSubmit }>
-                        <CityInput name="From:" htmlFor="from" required />
-                        <CityInput name="To:" htmlFor="to" />
-                        {/*<label htmlFor="from">
-                            From:
-                            <input type="text" name="from" list="cities" placeholder="Enter city name"
-                                   value={ inputValue } onChange={ handleChange } required/>
-                        </label>*/}
-                        {/*<label htmlFor="to">
-                            To:
-                            <input type="text" name="to" list="cities" placeholder="Enter city name"/>
-                        </label>*/}
-
-
+                        <CityInput name="From:" htmlFor="from" required/>
+                        <CityInput name="To:" htmlFor="to"/>
 
                         <label htmlFor="departureDate">
                             Departure date:

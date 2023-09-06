@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-
 const ticketsApi = createApi( {
     reducerPath: 'tickets',
     baseQuery: fetchBaseQuery( {

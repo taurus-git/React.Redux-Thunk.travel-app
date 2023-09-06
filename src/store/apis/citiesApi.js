@@ -7,9 +7,9 @@ const citiesApi = createApi( {
     } ),
     endpoints( builder ) {
         return {
-            getCities: builder.query({
-                query: (searchTerm) => {
-                    if (!searchTerm) return null;
+            getCities: builder.query( {
+                query: ( searchTerm ) => {
+                    if ( !searchTerm ) return null;
 
                     return {
                         url: `/places2`,
@@ -21,7 +21,7 @@ const citiesApi = createApi( {
                         }
                     }
                 }
-            }),
+            } ),
         }
     }
 } );

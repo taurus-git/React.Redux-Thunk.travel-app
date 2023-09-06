@@ -1,31 +1,29 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { debounce } from "lodash";
 import { useGetCitiesQuery, changeCityName } from "../../store";
 
 const CityInput = ( { name, htmlFor, required } ) => {
     const dispatch = useDispatch();
-    const inputValue = useSelector( ( state ) =>
-        state.cityNameInput[htmlFor]
-    );
+    const city = useSelector( ( state ) => state.cityNameInput[htmlFor] );
+    const [debouncedValue, setDebouncedValue] = useState( city.name );
+    const { data: citiesData } = useGetCitiesQuery( debouncedValue, { skip: !debouncedValue } );
+    const isCitiesDataExist = citiesData && Object.keys( citiesData )?.length > 0;
 
-    const [debouncedValue, setDebouncedValue] = useState( inputValue );
-
-    const debounceUpdater = debounce( ( updateFunc, value ) => {
-        updateFunc( value );
-    }, 300 );
-
-    const updateDebouncedValue = useCallback( ( value ) => {
-        debounceUpdater( setDebouncedValue, value );
-    }, [] );
-
-    const shouldSkip = !debouncedValue;
-    const { data: citiesData } = useGetCitiesQuery( debouncedValue, { skip: shouldSkip } );
+    useEffect( () => {
+        if ( debouncedValue && isCitiesDataExist ) {
+            const cityCode = citiesData.find( city => city.name === debouncedValue )?.code;
+            if ( cityCode ) {
+                dispatch( changeCityName( { field: htmlFor, name: debouncedValue, code: cityCode } ) );
+            }
+        }
+    }, [isCitiesDataExist, debouncedValue, citiesData, dispatch] );
 
     const handleChange = ( e ) => {
-        const value = e.target.value;
-        dispatch( changeCityName( { field: htmlFor, value } ) );
-        updateDebouncedValue( value );
+        const cityName = e.target.value;
+
+        setTimeout( () =>
+                setDebouncedValue( cityName ),
+            300 );
     };
 
     return (
@@ -33,7 +31,7 @@ const CityInput = ( { name, htmlFor, required } ) => {
             <label htmlFor={ htmlFor }>
                 { name }
                 <input type="text" name={ htmlFor } list={ `${ htmlFor }-cities` } placeholder="Enter city name"
-                       value={ inputValue } onChange={ handleChange } required={ required }/>
+                       value={ city.name } onChange={ handleChange } required={ required }/>
             </label>
             <datalist id={ `${ htmlFor }-cities` }>
                 { citiesData?.map( city => (

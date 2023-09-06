@@ -3,13 +3,17 @@ import { createSlice } from '@reduxjs/toolkit'
 const cityNameSlice = createSlice( {
     name: 'cityNameInput',
     initialState: {
-        from: '',
-        to: ''
+        from: {},
+        to: {}
     },
     reducers: {
         changeCityName( state, action ) {
-            const { field, value } = action.payload;
-            state[field] = value;
+            const { field, name, code } = action.payload;
+            if ( name && code ) {
+                state[field][name] = code;
+            } else {
+                delete state[field].name;
+            }
         },
     },
 } );
