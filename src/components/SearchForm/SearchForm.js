@@ -1,30 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useSearchTicketsQuery, useGetCitiesQuery } from "../../store";
+import { useSearchTicketsQuery } from "../../store";
 import CityInput from "../CityInput/CityInput";
 
 const SearchForm = () => {
-    const { from, to } = useSelector( ( state ) =>
+    const { origin, destination } = useSelector( ( state ) =>
         state.cityNameInput
     );
+    const [searchQuery, setSearchQuery] = useState( {} );
+    const { data: searchResults, error, isFetching } = useSearchTicketsQuery(
+        searchQuery, { skip: !searchQuery.origin || !searchQuery.destination }
+    );
+
+    const getCityCode = ( city ) => {
+        if ( Object.keys( city ).length ) {
+            const name = Object.keys( city )[0];
+            const code = city[name];
+            return code;
+        }
+    }
 
     const handleSubmit = ( e ) => {
         e.preventDefault();
-
         const formData = new FormData( e.target );
-
-
-        /*const newParams = {
-            from: citiesData?.find( city => city.name === from)?.code,
-            to: citiesData?.find( city => city.name === to )?.code,
-            /!*departureDate: formData.get( 'departureDate' ),
-            returnDate: formData.get( 'returnDate' ),
-            adults: Number( formData.get( 'adults' ) ),
-            children: Number( formData.get( 'children' ) ),*!/
+        const { departureDate, returnDate, adults, children } = formData;
+        const params = {
+            origin: getCityCode( origin ),
+            destination: getCityCode( destination ),
+            departureDate: departureDate,
+            returnDate: returnDate,
+            adults: Number( adults ),
+            children: Number( children ),
         };
 
-        console.log( newParams );*/
+        setSearchQuery( params );
     };
+
+    console.log(searchResults);
+
+    let content;
+    if (isFetching) {
+        content = <div>Loading...</div>
+    } else if ( error ) {
+        content = <div>Error loading Search results</div>;
+    } else if (searchResults && searchResults.destinations) {
+        content = searchResults.destinations[0];
+    } else {
+        content = <div>No results found</div>
+    }
 
     return (
         <div className="container">
@@ -33,10 +56,9 @@ const SearchForm = () => {
                     <h1>The whole world awaits.</h1>
                 </div>
                 <div className="search-form__form">
-
                     <form onSubmit={ handleSubmit }>
-                        <CityInput name="From:" htmlFor="from" required/>
-                        <CityInput name="To:" htmlFor="to"/>
+                        <CityInput name="From:" htmlFor="origin"/>
+                        <CityInput name="To:" htmlFor="destination"/>
 
                         <label htmlFor="departureDate">
                             Departure date:
@@ -62,6 +84,9 @@ const SearchForm = () => {
 
                     </form>
                 </div>
+
+                { content }
+
             </div>
         </div>
     );

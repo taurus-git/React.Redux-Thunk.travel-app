@@ -14,19 +14,23 @@ const ticketsApi = createApi( {
     endpoints( builder ) {
         return {
             searchTickets: builder.query( {
-                query: () => ({
+                query: ( { origin, destination } ) => {
+
+                    if(!origin || !destination) return;
+
+                    return {
                     url: '/prices/nearest-places-matrix',
                     method: 'GET',
                     params: {
-                        origin: 'ARH',
-                        destination: 'MOW',
+                        origin: origin,
+                        destination: destination,
                         flexibility: '0',
-                        currency: 'RUB',
+                        currency: 'USD',
                         show_to_affiliates: 'true',
                         limit: '10',
                         distance: '100'
                     }
-                })
+                }}
             } ),
         }
     }

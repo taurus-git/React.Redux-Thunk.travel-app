@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const cityNameSlice = createSlice( {
     name: 'cityNameInput',
     initialState: {
-        from: {},
-        to: {}
+        origin: {},
+        destination: {}
     },
     reducers: {
         changeCityName( state, action ) {
