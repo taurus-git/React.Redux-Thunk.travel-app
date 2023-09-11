@@ -23,27 +23,25 @@ const SearchForm = () => {
     const handleSubmit = ( e ) => {
         e.preventDefault();
         const formData = new FormData( e.target );
-        const { departureDate, returnDate, adults, children } = formData;
+
         const params = {
             origin: getCityCode( origin ),
             destination: getCityCode( destination ),
-            departureDate: departureDate,
-            returnDate: returnDate,
-            adults: Number( adults ),
-            children: Number( children ),
+            departDate: formData.get( 'departDate' ),
+            returnDate: formData.get( 'returnDate' ),
         };
 
         setSearchQuery( params );
     };
 
-    console.log(searchResults);
+    console.log( searchResults );
 
     let content;
-    if (isFetching) {
+    if ( isFetching ) {
         content = <div>Loading...</div>
     } else if ( error ) {
         content = <div>Error loading Search results</div>;
-    } else if (searchResults && searchResults.destinations) {
+    } else if ( searchResults && searchResults.destinations ) {
         content = searchResults.destinations[0];
     } else {
         content = <div>No results found</div>
@@ -60,24 +58,14 @@ const SearchForm = () => {
                         <CityInput name="From:" htmlFor="origin"/>
                         <CityInput name="To:" htmlFor="destination"/>
 
-                        <label htmlFor="departureDate">
+                        <label htmlFor="departDate">
                             Departure date:
-                            <input type="date" name="departureDate" required/>
+                            <input type="date" name="departDate" required/>
                         </label>
 
-                        <label htmlFor="returnTicketDate">
+                        <label htmlFor="returnDate">
                             Return ticket date:
                             <input type="date" name="returnDate"/>
-                        </label>
-
-                        <label htmlFor="adults">
-                            Adults:
-                            <input type="number" name="adults" min="1" defaultValue="2"/>
-                        </label>
-
-                        <label htmlFor="children">
-                            Children:
-                            <input type="number" name="children" min="0" defaultValue="0"/>
                         </label>
 
                         <button type="submit">Search</button>

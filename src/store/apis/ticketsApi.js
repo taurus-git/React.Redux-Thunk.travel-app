@@ -14,9 +14,9 @@ const ticketsApi = createApi( {
     endpoints( builder ) {
         return {
             searchTickets: builder.query( {
-                query: ( { origin, destination } ) => {
+                query: ( { origin, destination, departDate, returnDate } ) => {
 
-                    if(!origin || !destination) return;
+                    if(!origin || !destination || !departDate) return;
 
                     return {
                     url: '/prices/nearest-places-matrix',
@@ -24,11 +24,13 @@ const ticketsApi = createApi( {
                     params: {
                         origin: origin,
                         destination: destination,
-                        flexibility: '0',
-                        currency: 'USD',
+                        depart_date: departDate,
+                        return_date: returnDate,
+                        flexibility: '7',
+                        currency: 'EUR',
                         show_to_affiliates: 'true',
                         limit: '10',
-                        distance: '100'
+                        distance: '1',
                     }
                 }}
             } ),
