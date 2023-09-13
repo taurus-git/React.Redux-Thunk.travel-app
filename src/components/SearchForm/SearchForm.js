@@ -7,17 +7,20 @@ const SearchForm = () => {
     const { origin, destination } = useSelector( ( state ) =>
         state.cityNameInput
     );
+
     const [searchQuery, setSearchQuery] = useState( {} );
     const { data: searchResults, error, isFetching } = useSearchTicketsQuery(
         searchQuery, { skip: !searchQuery.origin || !searchQuery.destination }
     );
 
     const getCityCode = ( city ) => {
+
         if ( Object.keys( city ).length ) {
             const name = Object.keys( city )[0];
             const code = city[name];
             return code;
         }
+
     }
 
     const handleSubmit = ( e ) => {

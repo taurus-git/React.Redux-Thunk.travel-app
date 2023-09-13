@@ -9,10 +9,11 @@ const cityNameSlice = createSlice( {
     reducers: {
         changeCityName( state, action ) {
             const { field, name, code } = action.payload;
+
             if ( name && code ) {
-                state[field][name] = code;
+                state[field] = { [name]: code };
             } else {
-                delete state[field].name;
+                state[field] = {};
             }
         },
     },

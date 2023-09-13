@@ -11,6 +11,7 @@ const CityInput = ( { name, htmlFor } ) => {
 
     useEffect( () => {
         if ( debouncedValue && isCitiesDataExist ) {
+            console.log(debouncedValue);
             const cityCode = citiesData.find( city => city.name === debouncedValue )?.code;
             if ( cityCode ) {
                 dispatch( changeCityName( { field: htmlFor, name: debouncedValue, code: cityCode } ) );
@@ -23,7 +24,7 @@ const CityInput = ( { name, htmlFor } ) => {
 
         setTimeout( () =>
                 setDebouncedValue( cityName ),
-            300 );
+            200 );
     };
 
     return (
@@ -31,7 +32,7 @@ const CityInput = ( { name, htmlFor } ) => {
             <label htmlFor={ htmlFor }>
                 { name }
                 <input type="text" name={ htmlFor } list={ `${ htmlFor }-cities` } placeholder="Enter city name"
-                       value={ city.name } onChange={ handleChange } required />
+                       value={ city.name } onChange={ handleChange } required/>
             </label>
             <datalist id={ `${ htmlFor }-cities` }>
                 { citiesData?.map( city => (
