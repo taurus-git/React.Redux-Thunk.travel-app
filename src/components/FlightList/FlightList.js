@@ -4,23 +4,32 @@ import FlightListItem from "../FlightListItem/FlightListItem";
 
 const FlightList = () => {
     const flightsData = useSelector( state => state.flightsData );
+    const { origin, destination } = useSelector( state => state.cityNameInput )
 
-    console.log( flightsData );
+    const renderCity = ( cityData ) => {
+        const [cityName, cityCode] = Object.entries( cityData )[0];
 
-    if ( !flightsData || flightsData.length === 0) {
+        return (
+            <p><b>{ cityName }</b> <span>({ cityCode })</span></p>
+        )
+    }
+
+    if ( !flightsData || flightsData.length === 0 ) {
         return null;
     }
+
 
     return (
         <div className="container">
             <h1>Select flights</h1>
             <div className="flight-header">
-
+                { renderCity( origin ) }
+                { renderCity( destination ) }
             </div>
             <div className="flight-list">
-               {/* { flightsData && flightsData.prices.map( ( flight ) => (
+                {/* { flightsData && flightsData.prices.map( ( flight ) => (
                     <FlightListItem flight={ flight }/>
-                ) ) }*/}
+                ) ) }*/ }
             </div>
         </div>
     );
