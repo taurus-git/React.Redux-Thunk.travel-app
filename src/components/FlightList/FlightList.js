@@ -18,18 +18,19 @@ const FlightList = () => {
         return null;
     }
 
-
     return (
         <div className="container">
-            <h1>Select flights</h1>
-            <div className="flight-header">
-                { renderCity( origin ) }
-                { renderCity( destination ) }
-            </div>
             <div className="flight-list">
-                {/* { flightsData && flightsData.prices.map( ( flight ) => (
-                    <FlightListItem flight={ flight }/>
-                ) ) }*/ }
+                <h1>Select flights</h1>
+                <div className="flight-header">
+                    { renderCity( origin ) }
+                    { renderCity( destination ) }
+                </div>
+                <div className="flight-list__list">
+                    { flightsData.prices.map( ( flight ) => (
+                    <FlightListItem key={flight.destination + flight.distance + flight.depart_date} flight={ flight }/>
+                ) ) }
+                </div>
             </div>
         </div>
     );
