@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FlightListItem = ( { flight } ) => {
-    const { depart_date, link, gate: tiketSaler, price } = flight;
+    const { depart_date, link, gate: tiketSaler, price, duration } = flight;
 
     function extractTimeZone( dateString ) {
         const match = dateString.match( /([+-]\d{2}):(\d{2})$/ );
@@ -27,16 +27,28 @@ const FlightListItem = ( { flight } ) => {
         return `${ dayName }, ${ day } ${ month } ${ year } ${ utc }`;
     }
 
-    const departDate = formatDate( depart_date );
+    function formatDuration(duration) {
+        const hours = Math.floor(duration / 60);
+        const minutes = duration % 60;
 
-    const ticketLink = " https://www.aviasales.com" + link;
+        if (hours === 0) {
+            return `${minutes}min`;
+        } else {
+            return `${hours}h ${minutes}min`;
+        }
+    }
+
+    const departDate = formatDate( depart_date );
+    const ticketLink = "https://www.aviasales.com" + link;
+    const flightDuration = formatDuration(duration);
 
     return (
         <div className="flight-list__list-item">
-            <p>{ "depart_date: " + departDate }</p>
+            <p>{ "Depart date: " + departDate }</p>
             <a href={ ticketLink } target="_blank">Ticket link</a>
             <p>Ticket fount at: { tiketSaler }</p>
             <span>{ price } €</span>
+            <span>{"Flight Duration: " + flightDuration}</span>
         </div>
     );
 }
