@@ -1,4 +1,74 @@
 .search-form {
-  color: $black;
+  color: $white;
 }
 
+.search-form__fields-container {
+  display: flex;
+  justify-content: center;
+}
+
+.search-form__field-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4.4rem;
+  border-radius: 3.2rem;
+  background: rgba(255, 255, 255, 0.40);
+  backdrop-filter: blur(16px);
+}
+
+.search-form__field-wrapper input {
+  height: 100%;
+
+  &::placeholder {
+    color: $white;
+    opacity: .7;
+    text-align: center;
+  }
+}
+
+.search-form__field-wrapper--horizontal {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    display: block;
+  }
+}
+
+.search-form__input {
+  text-align: center;
+}
+
+.search-form__icon--origin,
+.search-form__icon--destination {
+  position: absolute;
+  left: 2rem;
+
+  &::before {
+    content: url('/src/assets/img/jet-icon.svg');
+    display: block;
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    width: 3rem;
+    height: 3rem;
+  }
+
+}
+
+.search-form__icon--origin::before {
+  transform:translateY(-50%)rotate(-30deg);
+}
+
+.search-form__icon--destination::before {
+  transform:translateY(-50%)rotate(30deg);
+}

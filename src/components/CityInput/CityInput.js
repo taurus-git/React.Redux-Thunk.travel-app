@@ -26,13 +26,27 @@ const CityInput = ( { name, htmlFor } ) => {
             200 );
     };
 
+    const preparePlaceholder = ( str ) => {
+        if ( !str || typeof 'string' === str ) return "";
+
+        return str.charAt( 0 ).toUpperCase() + str.slice( 1 ).toLowerCase();
+    }
+
     return (
         <>
-            <label htmlFor={ htmlFor }>
+            <label htmlFor={ htmlFor }
+                   className="visually-hidden">
                 { name }
-                <input type="text" name={ htmlFor } list={ `${ htmlFor }-cities` } placeholder="Enter city name"
-                       value={ city.name } onChange={ handleChange } required/>
             </label>
+            <span className={ `search-form__icon--${ htmlFor }` }></span>
+            <input type="text"
+                   name={ htmlFor }
+                   list={ `${ htmlFor }-cities` }
+                   className="search-form__input"
+                   placeholder={ preparePlaceholder( htmlFor ) }
+                   value={ city.name }
+                   onChange={ handleChange }
+                   required/>
             <datalist id={ `${ htmlFor }-cities` }>
                 { citiesData?.map( city => (
                     <option key={ city.code + city.name } value={ city.name }/>

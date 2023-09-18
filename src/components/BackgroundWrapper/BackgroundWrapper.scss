@@ -1,0 +1,12 @@
+.background-wrapper {
+  min-height: 47rem;
+  background-image: url('/src/assets/img/bg.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $white;
+  padding: 1.5rem 0;
+
+  @media screen and (min-width: $screen-sm) {
+    min-height: 84rem;
+  }
+}

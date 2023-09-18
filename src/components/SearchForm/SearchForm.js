@@ -46,19 +46,31 @@ const SearchForm = () => {
                 <div className="search-form__title">
                     <h1>The whole world awaits.</h1>
                 </div>
-                <div className="search-form__form">
+                <div className="search-form__container">
                     <form onSubmit={ handleSubmit }>
-                        <CityInput name="From:" htmlFor="origin"/>
-                        <CityInput name="To:" htmlFor="destination"/>
-                        <label htmlFor="departDate">
-                            Departure date:
-                            <input type="date" name="departDate" required/>
-                        </label>
-                        <label htmlFor="returnDate">
-                            Return ticket date:
-                            <input type="date" name="returnDate"/>
-                        </label>
-                        <button type="submit">Search</button>
+                        <div className="search-form__field-wrapper">
+                            <CityInput name="From:" htmlFor="origin"/>
+                        </div>
+                        <div className="search-form__field-wrapper">
+                            <CityInput name="To:" htmlFor="destination"/>
+                        </div>
+                        <div className="search-form__fields-container">
+                            <div className="search-form__field-wrapper search-form__field-wrapper--horizontal">
+                                <label htmlFor="departDate" className="visually-hidden">
+                                    Check in:
+                                </label>
+                                <input type="date" name="departDate" required/>
+                            </div>
+                            <div className="search-form__field-wrapper search-form__field-wrapper--horizontal">
+                                <label htmlFor="returnDate" className="visually-hidden">
+                                    Check out:
+                                </label>
+                                <input type="date" name="returnDate"/>
+                            </div>
+                        </div>
+                        <div className="search-form__field-wrapper search-form__field-wrapper--search">
+                            <button type="submit">Search</button>
+                        </div>
                     </form>
                 </div>
             </div>
