@@ -20,6 +20,7 @@
 
 .search-form__field-wrapper input {
   height: 100%;
+  text-align: center;
 
   &::placeholder {
     color: $white;
@@ -50,25 +51,32 @@
 
 .search-form__icon--origin,
 .search-form__icon--destination {
-  position: absolute;
-  left: 2rem;
-
   &::before {
     content: url('/src/assets/img/jet-icon.svg');
     display: block;
     position: absolute;
-    left: 1rem;
+    left: 3rem;
     top: 50%;
     width: 3rem;
     height: 3rem;
   }
-
 }
 
 .search-form__icon--origin::before {
-  transform:translateY(-50%)rotate(-30deg);
+  transform: translateY(-50%) rotate(-30deg);
 }
 
 .search-form__icon--destination::before {
-  transform:translateY(-50%)rotate(30deg);
+  transform: translateY(-50%) rotate(30deg);
 }
+
+input[type="date"] + .search-form__icon--calendar {
+  &::before {
+    content: url('/src/assets/img/calendar-icon.svg');
+    position: absolute;
+    right: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+

@@ -21,6 +21,11 @@ const SearchForm = () => {
 
     }
 
+    const handleFocus = ( e ) => {
+        e.target.type = "date";
+        e.target.placeholder = "";
+    }
+
     const handleSubmit = ( e ) => {
         e.preventDefault();
         const formData = new FormData( e.target );
@@ -59,13 +64,34 @@ const SearchForm = () => {
                                 <label htmlFor="departDate" className="visually-hidden">
                                     Check in:
                                 </label>
-                                <input type="date" name="departDate" required/>
+                                <input
+                                    type="text"
+                                    name="departDate"
+                                    placeholder="Check in"
+                                    onFocus={ handleFocus }
+                                    required
+                                />
+                                <span className={ `search-form__icon--calendar` }
+                                      onClick={() => {
+                                          document.querySelector('input[name="departDate"]').showPicker();
+                                      }}>
+                                </span>
                             </div>
                             <div className="search-form__field-wrapper search-form__field-wrapper--horizontal">
                                 <label htmlFor="returnDate" className="visually-hidden">
                                     Check out:
                                 </label>
-                                <input type="date" name="returnDate"/>
+                                <input
+                                    type="text"
+                                    name="returnDate"
+                                    placeholder="Check out"
+                                    onFocus={ handleFocus }
+                                />
+                                <span className={ `search-form__icon--calendar` }
+                                      onClick={() => {
+                                          document.querySelector('input[name="returnDate"]').showPicker();
+                                      }}>
+                                </span>
                             </div>
                         </div>
                         <div className="search-form__field-wrapper search-form__field-wrapper--search">
