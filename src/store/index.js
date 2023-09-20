@@ -25,5 +25,5 @@ export {
     changeCityName,
 } from './slices/cityNameSlice';
 export {
-    getFlightsData,
+    setFlightsData,
 } from './slices/flightsDataSlice';

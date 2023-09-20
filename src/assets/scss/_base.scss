@@ -74,10 +74,6 @@ input[type="date"]::-moz-calendar-picker-indicator {
   height: 3rem;
 }
 
-.button {
-  background-color: unset;
-}
-
 .container {
   width: 100%;
   padding-left: 24px;
@@ -88,6 +84,15 @@ input[type="date"]::-moz-calendar-picker-indicator {
   &.full {
 
   }
+}
+
+.button {
+  background-color: unset;
+}
+
+.no-click {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 @media (min-width: 768px) {

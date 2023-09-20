@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSearchTicketsQuery, getFlightsData } from "../../store";
+import classNames from "classnames";
+import { useSearchTicketsQuery, setFlightsData } from "../../store";
 import CityInput from "../CityInput/CityInput";
 
 const SearchForm = () => {
@@ -10,21 +11,54 @@ const SearchForm = () => {
     const { data: searchResults, error, isFetching } = useSearchTicketsQuery(
         searchQuery, { skip: !searchQuery.origin || !searchQuery.destination }
     );
+    const [departDateFilled, setDepartDateFilled] = useState( false );
+
 
     const getCityCode = ( city ) => {
-
         if ( Object.keys( city ).length ) {
             const name = Object.keys( city )[0];
             const code = city[name];
             return code;
         }
-
     }
 
     const handleFocus = ( e ) => {
         e.target.type = "date";
         e.target.placeholder = "";
     }
+
+    const isDateValid = ( dateStr ) => {
+        const regex = /^\d{4}-\d{2}-\d{2}$/;
+        return regex.test( dateStr );
+    }
+
+    const handleDateChange = ( e ) => {
+        setDepartDateFilled( isDateValid( e.target.value ) )
+    }
+
+    const areRequiredFieldsFilled = () => {
+        return !!getCityCode( origin ) && !!getCityCode( destination ) && departDateFilled
+    }
+
+    const handleDateInputClick = ( name ) => {
+        document.querySelector( `input[name="${ name }"]` ).showPicker();
+    }
+
+    let buttonClasses = 'search-form__field-wrapper search-form__field-wrapper--search';
+    if ( areRequiredFieldsFilled() ) {
+        buttonClasses += ' search-form__field-wrapper--filled';
+    } else {
+        buttonClasses += ' no-click';
+    }
+
+    const getSubmitButtonText = () => {
+        if ( isFetching ) {
+            return 'Loading...';
+        }
+
+        return "Search";
+    }
+    const submitButtonText = getSubmitButtonText();
 
     const handleSubmit = ( e ) => {
         e.preventDefault();
@@ -41,7 +75,7 @@ const SearchForm = () => {
 
     useEffect( () => {
         if ( searchResults && searchResults.destinations ) {
-            dispatch( getFlightsData( searchResults ) );
+            dispatch( setFlightsData( searchResults ) );
         }
     }, [searchResults, dispatch] );
 
@@ -69,12 +103,11 @@ const SearchForm = () => {
                                     name="departDate"
                                     placeholder="Check in"
                                     onFocus={ handleFocus }
+                                    onChange={ handleDateChange }
                                     required
                                 />
                                 <span className={ `search-form__icon--calendar` }
-                                      onClick={() => {
-                                          document.querySelector('input[name="departDate"]').showPicker();
-                                      }}>
+                                      onClick={ () => handleDateInputClick( "departDate" ) }>
                                 </span>
                             </div>
                             <div className="search-form__field-wrapper search-form__field-wrapper--horizontal">
@@ -88,14 +121,14 @@ const SearchForm = () => {
                                     onFocus={ handleFocus }
                                 />
                                 <span className={ `search-form__icon--calendar` }
-                                      onClick={() => {
-                                          document.querySelector('input[name="returnDate"]').showPicker();
-                                      }}>
+                                      onClick={ () => handleDateInputClick( "returnDate" ) }>
                                 </span>
                             </div>
                         </div>
-                        <div className="search-form__field-wrapper search-form__field-wrapper--search">
-                            <button type="submit">Search</button>
+                        <div className={ buttonClasses }>
+                            <button type="submit">
+                                { submitButtonText }
+                            </button>
                         </div>
                     </form>
                 </div>

@@ -10,17 +10,23 @@
 .search-form__field-wrapper {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 4.4rem;
   border-radius: 3.2rem;
   background: rgba(255, 255, 255, 0.40);
   backdrop-filter: blur(16px);
+
+  &:not(:last-child) {
+    margin-bottom: 1.6rem;
+  }
 }
 
 .search-form__field-wrapper input {
   height: 100%;
+  width: 100%;
   text-align: center;
+  flex-grow: 1;
 
   &::placeholder {
     color: $white;
@@ -74,9 +80,51 @@ input[type="date"] + .search-form__icon--calendar {
   &::before {
     content: url('/src/assets/img/calendar-icon.svg');
     position: absolute;
+    cursor: pointer;
     right: 2.5rem;
     top: 50%;
     transform: translateY(-50%);
   }
 }
 
+.search-form__field-wrapper--search button {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.search-form__field-wrapper--filled {
+  background-color: $primary;
+  cursor: pointer;
+}
+
+@media screen and (min-width: $screen-md) {
+  .search-form__container form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .search-form__container form .search-form__field-wrapper:nth-child(1),
+  .search-form__container form .search-form__field-wrapper:nth-child(2) {
+    flex: 1 1 calc(50% - 2rem);
+  }
+
+  .search-form__container form .search-form__field-wrapper:nth-child(1) {
+    margin-right: 2rem;
+  }
+
+  .search-form__fields-container,
+  .search-form__field-wrapper--search {
+    flex: 1 1 calc(50% - 2rem);
+  }
+
+  .search-form__fields-container {
+    margin-right: 2rem;
+  }
+
+  .search-form__field-wrapper--filled {
+    background-color: $white;
+    color: $primary;
+  }
+}

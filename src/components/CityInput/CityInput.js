@@ -12,9 +12,11 @@ const CityInput = ( { name, htmlFor } ) => {
     useEffect( () => {
         if ( debouncedValue && isCitiesDataExist ) {
             const cityCode = citiesData.find( city => city.name === debouncedValue )?.code;
+
             if ( cityCode ) {
                 dispatch( changeCityName( { field: htmlFor, name: debouncedValue, code: cityCode } ) );
             }
+
         }
     }, [isCitiesDataExist, debouncedValue, citiesData, dispatch] );
 

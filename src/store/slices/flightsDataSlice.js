@@ -4,13 +4,11 @@ const flightsDataSlice = createSlice( {
     name: 'flightsData',
     initialState: [],
     reducers: {
-        getFlightsData( state, action ) {
-            console.log(state);
-            console.log(action.payload);
+        setFlightsData( state, action ) {
             return action.payload;
         },
     },
 } )
 
-export const { getFlightsData } = flightsDataSlice.actions
+export const { setFlightsData } = flightsDataSlice.actions
 export const flightsDataReducer = flightsDataSlice.reducer
